@@ -13,8 +13,8 @@ public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-//	@ManyToOne
-//	@JoinColumn(name="student_id")
+	@ManyToOne
+	@JoinColumn(name="student_id")
 	private Student student;
 	
 	public Student getStudent() {

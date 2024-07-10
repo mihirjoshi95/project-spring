@@ -1,9 +1,6 @@
 package com.boa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Payment {
@@ -12,6 +9,8 @@ public class Payment {
 	private Long id;
 	private String type;
 	private int amount;
+	@OneToOne(mappedBy = "address")
+	Student student;
 	
 	public Long getId() {
 		return id;

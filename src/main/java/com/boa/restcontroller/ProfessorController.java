@@ -36,9 +36,10 @@ public class ProfessorController {
 
 
 	@PostMapping
-	public Professor addGrades(@RequestBody Long id,Grade grade) {
-		gradeRepository.save(grade);
+	public Grade addGrades(@RequestBody Long id,Grade grade) {
+		return gradeRepository.save(grade);
 	}
+
 	@GetMapping
 	public List<Student> getAllStudents() {
 		return studentRepository.findAll();
