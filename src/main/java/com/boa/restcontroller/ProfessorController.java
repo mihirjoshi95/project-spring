@@ -35,6 +35,7 @@ public class ProfessorController {
 	public String addGrades(@RequestBody Long id,String grade) {
 		return professorService.addGrades(id, grade);
 	}
+	
 	@GetMapping
 	public List<Student> getAllStudents() {
 		return professorService.getAllStudents();

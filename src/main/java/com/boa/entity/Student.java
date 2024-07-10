@@ -2,12 +2,7 @@ package com.boa.entity;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -16,10 +11,13 @@ public class Student extends User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-//	@OneToMany(cascade =CascadeType.ALL )
+	@OneToMany(cascade =CascadeType.ALL )
 	private List<Course> courses;
 	private String address;
 	private String grade;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "p_id", referencedColumnName = "id")
+	private Payment payment;
 
 	public String getGrade() {
 		return grade;
