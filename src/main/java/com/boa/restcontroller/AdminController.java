@@ -19,43 +19,35 @@ import com.boa.repo.AdminRepository;
 import com.boa.repo.CourseRepository;
 import com.boa.repo.ProfessorRepository;
 import com.boa.repo.StudentRepository;
+import com.boa.service.AdminService;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 
 	@Autowired
-	private AdminRepository adminRepository;
-
-	@Autowired
-	private StudentRepository studentRepository;
+	private AdminService adminService;
 	
-	@Autowired
-	private ProfessorRepository professorRepository;
-
-	@Autowired
-	private CourseRepository courseRepository;
-	
-	@GetMapping // request mapping change
-	public Student generateReportCard(Long id) {
-		return studentRepository.findById(id).orElse(null);
+//	@GetMapping // request mapping change
+//	public Student generateReportCard(Long id) {
+//		return studentRepository.findById(id).orElse(null);
+//	}
+	@PostMapping
+	public String addProfessor(@RequestBody Professor professor) {
+		return adminService.addProfessor(professor);
 	}
 	@PostMapping
-	public Professor addProfessor(@RequestBody Professor professor) {
-		return professorRepository.save(professor);
-	}
-	@PostMapping
-	public void addCourse(@RequestBody Course course) {
-		courseRepository.save(course);
-//		 studentRepository.findById(id).get().getCourses().add(course);
+	public String addCourse(@RequestBody Course course) {
+		return adminService.addCourse(course);
 	}
 	@DeleteMapping
-	public void deleteCourse(Long id, Long courseId) {
-		courseRepository.deleteById(id);;
-//		studentRepository.findById(id).get().getCourses().remove(0);
+	public String deleteCourse(Long id) {
+		return adminService.deleteCourse(id);
 	}
 	@PostMapping
-	public void approveRegistration(Long id) {
+	public String approveStudent(Long id) {
+		return adminService.approveStudent(id);
+
 //		return  studentRepository.findById(id).get().getCourses().;
 	}
 

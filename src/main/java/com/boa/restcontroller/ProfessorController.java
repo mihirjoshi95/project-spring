@@ -18,6 +18,9 @@ import com.boa.entity.Student;
 import com.boa.repo.GradeRepository;
 import com.boa.repo.ProfessorRepository;
 import com.boa.repo.StudentRepository;
+import com.boa.service.AdminService;
+import com.boa.service.ProfessorService;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -26,51 +29,44 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProfessorController {
 
 	@Autowired
-	private ProfessorRepository professorRepository;
-
-	@Autowired
-	private StudentRepository studentRepository;
-
-	@Autowired
-	private GradeRepository gradeRepository;
-
+	private ProfessorService professorService;
 
 	@PostMapping
-	public Professor addGrades(@RequestBody Long id,Grade grade) {
-		gradeRepository.save(grade);
+	public String addGrades(@RequestBody Long id,String grade) {
+		return professorService.addGrades(id, grade);
 	}
 	@GetMapping
 	public List<Student> getAllStudents() {
-		return studentRepository.findAll();
+		return professorService.getAllStudents();
 	}
 	
-	@GetMapping // request mapping change
-	public List<Professor> getAllProfessor() {
-		return professorRepository.findAll();
-	}
-
-	@PostMapping
-	public Professor addProfessor(@RequestBody Professor student) {
-		return professorRepository.save(student);
-	}
-
-	@GetMapping("/{id}")
-	public Professor getProfessorById(@PathVariable Long id) {
-		return professorRepository.findById(id).orElse(null);
-	}
-
-	@PutMapping("/{id}")
-	public Professor updateProfessor(@PathVariable Long id, @RequestBody Professor updatedProfessor) {
-		if (professorRepository.existsById(id)) {
-			updatedProfessor.setId(id);
-			return professorRepository.save(updatedProfessor);
-		}
-		return null;
-	}
-
-	@DeleteMapping("/{id}")
-	public void deleteProfessor(@PathVariable Long id) {
-		professorRepository.deleteById(id);
-	}
+//	@GetMapping // request mapping change
+//	public List<Professor> getAllProfessor() {
+//		return professorRepository.findAll();
+//	}
+//
+//	@PostMapping
+//	public Professor addProfessor(@RequestBody Professor student) {
+//		return professorRepository.save(student);
+//	}
+//
+//	@GetMapping("/{id}")
+//	public Professor getProfessorById(@PathVariable Long id) {
+//		return professorRepository.findById(id).orElse(null);
+//	}
+//
+//	@PutMapping("/{id}")
+//	public Professor updateProfessor(@PathVariable Long id, @RequestBody Professor updatedProfessor) {
+//		if (professorRepository.existsById(id)) {
+//			updatedProfessor.setId(id);
+//			return professorRepository.save(updatedProfessor);
+//		}
+//		return null;
+//	}
+//
+//	@DeleteMapping("/{id}")
+//	public void deleteProfessor(@PathVariable Long id) {
+//		professorRepository.deleteById(id);
+//	}
 
 }

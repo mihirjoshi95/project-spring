@@ -9,19 +9,21 @@ import jakarta.persistence.Id;
 public class Registration {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private Course course;
-	public Long getId() {
-		return id;
+	private Long studentId;
+
+	private String status;
+	public Long getStudentId() {
+		return studentId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
 	}
-	public Course getCourse() {
-		return course;
+	public String getStatus() {
+		return status;
 	}
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setStatus(String status) {
+		this.status = status;
 	}
+
 	
 }
