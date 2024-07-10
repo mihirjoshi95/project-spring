@@ -28,25 +28,25 @@ public class StudentController {
 	@Autowired
 	PaymentRepository paymentRepository;
 
-	@PostMapping
+	@PostMapping("/registerCourse")
 	public String registerCourse(@RequestBody Course course, Long id) {
 		//TODO: process POST request
-		studentRepository.getById(id).getCourses().add(course);
+//		studentRepository.getById(id).getCourses().add(course);
 		return "success";
 	}
 
-	@GetMapping
+	@GetMapping("/ViewGrades")
 	public Grade ViewGrades(@PathVariable Long id) {
 		// role check needed with SID
 		return gradeRepository.getById(id);
 	}
 
-	@PostMapping
+	@PostMapping("/addCourse")
 	public Course addCourse(@RequestBody Course course) {
 		return courseRepository.save(course);
 	}
 
-	@DeleteMapping
+	@DeleteMapping("/deleteCourse")
 	public String deleteCourse(@PathVariable Long studenID) {
 		try {
 			Student student = studentRepository.getById(studenID);

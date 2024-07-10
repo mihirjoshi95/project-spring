@@ -27,16 +27,16 @@ public class PaymentController {
 	@Autowired
 	private CourseRepository courseRepository;
 
-	@PostMapping
+	@PostMapping("/payCourseFee")
 	public void  payCourseFee(@RequestBody Student student) {
 		Integer studentTotalFeeAmount = 0;
 		Student studentData = studentRepository.findById(student.getId()).orElse(null);
 		if(null != studentData){
-			List<Course> courses = studentData.getCourses();
-			courses.stream().forEach(elt ->{
-				Course course = courseRepository.findById(elt.getId()).orElse(null);
-
-			});
+//			List<Course> courses = studentData.getCourses();
+//			courses.stream().forEach(elt ->{
+//				Course course = courseRepository.findById(elt.getId()).orElse(null);
+//
+//			});
 		}
 		if(studentTotalFeeAmount > 0){
 			Payment payment = new Payment();

@@ -10,6 +10,7 @@ import com.boa.repo.CourseRepository;
 import com.boa.repo.ProfessorRepository;
 import com.boa.repo.RegistrationRepository;
 import com.boa.repo.StudentRepository;
+import com.boa.repo.UserRepository;
 
 @Service
 public class AdminService {
@@ -29,10 +30,12 @@ public class AdminService {
 	@Autowired
 	private RegistrationRepository registrationRepository;
 
-	public String addCourse(Course course) {
+	@Autowired
+	private UserRepository userRepository;
+
+	public void addCourse(Course course) {
 
 				courseRepository.save(course);
-				return "course added";
 	}
 	public String addProfessor(Professor professor) {
 
@@ -44,7 +47,7 @@ public class AdminService {
 		return "course deleted";
 	}
 	public String approveStudent(Long studentId) {
-		adminRepository.findUnapproved().forEach(x->{
+		userRepository.findUnapproved().forEach(x->{
 			if(x.getUserId()==studentId) {
 				x.setIsApproved(1);
 			}

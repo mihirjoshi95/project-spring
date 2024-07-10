@@ -10,7 +10,7 @@ import com.boa.entity.Admin;
 import com.boa.entity.User;
 
 @Repository
-public interface AdminRepository extends JpaRepository<Admin, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 	// Crete / Update // delete / List operation
 
 	// Cutome // JPQL
@@ -18,5 +18,7 @@ public interface AdminRepository extends JpaRepository<Admin, Long> {
 	 * @return
 	 * Query use to fetch unapproved user.
 	 */
+	@Query(value="Select * from user where isApproved=0",nativeQuery=true)
+	List<User> findUnapproved();
 	
 }

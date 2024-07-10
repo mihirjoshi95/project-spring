@@ -12,28 +12,45 @@ import jakarta.persistence.ManyToOne;
 public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@ManyToOne
-	@JoinColumn(name="student_id")
-	private Student student;
+	private Long courseId;
+
+	private String courseName;
 	
-	public Student getStudent() {
-		return student;
+	private int courseFee;
+
+	public Long getCourseId() {
+		return courseId;
 	}
-	public void setStudent(Student student) {
-		this.student = student;
+
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
 	}
-	private String role;
-	public Long getId() {
-		return id;
+
+	public String getCourseName() {
+		return courseName;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
-	public String getRole() {
-		return role;
+
+	public int getCourseFee() {
+		return courseFee;
 	}
-	public void setRole(String role) {
-		this.role = role;
-	}	
+
+	public void setCourseFee(int courseFee) {
+		this.courseFee = courseFee;
+	}
+			
+//	@ManyToOne
+//	@JoinColumn(name="student_id")
+//	private Student student;
+//	
+//	public Student getStudent() {
+//		return student;
+//	}
+//	public void setStudent(Student student) {
+//		this.student = student;
+//	}
+	
 }

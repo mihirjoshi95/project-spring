@@ -9,22 +9,23 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Professor extends User {
+public class Professor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
 	private String subject;
-	@ManyToMany(mappedBy = "course_id")
-	private List<Course> courses;
-
-	public List<Course> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
-	}
+//	@ManyToMany(mappedBy = "course_id")
+//	private List<Course> courses;
+//
+//	public List<Course> getCourses() {
+//		return courses;
+//	}
+//
+//	public void setCourses(List<Course> courses) {
+//		this.courses = courses;
+//	}
 
 	public Long getId() {
 		return id;

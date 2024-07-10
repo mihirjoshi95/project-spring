@@ -6,18 +6,19 @@ import jakarta.persistence.*;
 
 
 @Entity
-public class Student extends User {
+public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
-	@OneToMany(cascade =CascadeType.ALL )
-	private List<Course> courses;
+//	@OneToMany(cascade =CascadeType.ALL )
+//	private List<Course> courses;
 	private String address;
 	private String grade;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "p_id", referencedColumnName = "id")
-	private Payment payment;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "p_id", referencedColumnName = "id")
+//	private Payment payment;
 
 	public String getGrade() {
 		return grade;
@@ -51,13 +52,13 @@ public class Student extends User {
 		this.address = address;
 	}
 
-	public List<Course> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
-	}
+//	public List<Course> getCourses() {
+//		return courses;
+//	}
+//
+//	public void setCourses(List<Course> courses) {
+//		this.courses = courses;
+//	}
 
 	
 

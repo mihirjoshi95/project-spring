@@ -13,7 +13,7 @@ public class User {
 	
 	private String userName;
 	private String passowrd;
-	private long isApproved;
+	private Long isApproved;
 	
 	public long getIsApproved() {
 		return isApproved;

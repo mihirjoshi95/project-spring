@@ -31,12 +31,12 @@ public class ProfessorController {
 	@Autowired
 	private ProfessorService professorService;
 
-	@PostMapping
+	@PostMapping("/addGrades")
 	public String addGrades(@RequestBody Long id,String grade) {
 		return professorService.addGrades(id, grade);
 	}
 	
-	@GetMapping
+	@GetMapping("/getAllStudents")
 	public List<Student> getAllStudents() {
 		return professorService.getAllStudents();
 	}

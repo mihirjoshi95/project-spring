@@ -3,6 +3,8 @@ package com.boa.restcontroller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.boa.entity.Course;
@@ -28,23 +31,25 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-//	@GetMapping // request mapping change
-//	public Student generateReportCard(Long id) {
-//		return studentRepository.findById(id).orElse(null);
-//	}
-	@PostMapping
+	@GetMapping("/generateReportCard")
+	public String generateReportCard(Long id) {
+		return "";
+	}
+	@PostMapping("/addProfessor")
 	public String addProfessor(@RequestBody Professor professor) {
 		return adminService.addProfessor(professor);
 	}
-	@PostMapping
-	public String addCourse(@RequestBody Course course) {
-		return adminService.addCourse(course);
+	@PostMapping("/addCourse")
+	public ResponseEntity<String> addCourse(@RequestBody Course course) {
+		adminService.addCourse(course);
+		return new ResponseEntity<String>("course added",HttpStatus.OK);
+
 	}
-	@DeleteMapping
+	@DeleteMapping("/deleteCourse")
 	public String deleteCourse(Long id) {
 		return adminService.deleteCourse(id);
 	}
-	@PostMapping
+	@PostMapping("/approveStudent")
 	public String approveStudent(Long id) {
 		return adminService.approveStudent(id);
 

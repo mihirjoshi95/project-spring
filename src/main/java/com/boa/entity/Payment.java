@@ -7,10 +7,11 @@ public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String type;
 	private int amount;
-	@OneToOne(mappedBy = "address")
-	Student student;
+//	@OneToOne(mappedBy = "address")
+//	Student student;
 	
 	public Long getId() {
 		return id;
