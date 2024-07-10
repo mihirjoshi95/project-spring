@@ -12,10 +12,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan({"com.boa.*"})
 @SpringBootApplication
-public class BoaSprongJpaDemoApplication {
+public class BoaSpringJPARESTApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BoaSprongJpaDemoApplication.class, args);
+		SpringApplication.run(BoaSpringJPARESTApplication.class, args);
 	}
 
 }

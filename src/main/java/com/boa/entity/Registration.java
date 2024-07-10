@@ -12,6 +12,7 @@ public class Registration {
 	private Long studentId;
 
 	private String status;
+	
 	public Long getStudentId() {
 		return studentId;
 	}

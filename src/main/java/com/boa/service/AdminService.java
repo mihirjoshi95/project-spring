@@ -44,7 +44,13 @@ public class AdminService {
 		return "course deleted";
 	}
 	public String approveStudent(Long studentId) {
-		registrationRepository.getById(studentId).setStatus("Registered");;
+		adminRepository.findUnapproved().forEach(x->{
+			if(x.getUserId()==studentId) {
+				x.setIsApproved(1);
+			}
+		}
+		);
+//		registrationRepository.getById(studentId).setStatus("Registered");;
 		return "Student registered";
 	}
 }

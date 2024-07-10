@@ -13,7 +13,14 @@ public class User {
 	
 	private String userName;
 	private String passowrd;
+	private long isApproved;
 	
+	public long getIsApproved() {
+		return isApproved;
+	}
+	public void setIsApproved(long isApproved) {
+		this.isApproved = isApproved;
+	}
 	public Long getUserId() {
 		return userId;
 	}
