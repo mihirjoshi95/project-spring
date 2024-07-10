@@ -2,7 +2,6 @@ package com.boa.restcontroller;
 
 import com.boa.entity.Course;
 import com.boa.entity.Grade;
-import com.boa.entity.Payment;
 import com.boa.entity.Student;
 import com.boa.repo.CourseRepository;
 import com.boa.repo.GradeRepository;
@@ -11,8 +10,6 @@ import com.boa.repo.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController
@@ -40,6 +37,7 @@ public class StudentController {
 
 	@GetMapping
 	public Grade ViewGrades(@PathVariable Long id) {
+		// role check needed with SID
 		return gradeRepository.getById(id);
 	}
 
@@ -58,25 +56,6 @@ public class StudentController {
 			ex.getCause();
 		}
 		return HttpStatus.BAD_REQUEST.getReasonPhrase();
-	}
-
-	@PostMapping
-	public void  payCourseFee(@RequestBody Student student) {
-     Integer studentTotalFeeAmount = 0;
-		Student studentData = studentRepository.findById(student.getId()).orElse(null);
-		if(null != studentData){
-			List<Course> courses = studentData.getCourses();
-			courses.stream().forEach(elt ->{
-				Course course = courseRepository.findById(elt.getId()).orElse(null);
-
-			});
-		}
-		if(studentTotalFeeAmount > 0){
-			Payment payment = new Payment();
-			payment.setAmount(studentTotalFeeAmount);
-			payment.setType("ONLINE");
-			paymentRepository.save(payment);
-		}
 	}
 
 }
